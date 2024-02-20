@@ -1,4 +1,3 @@
-// Kelas Buku
 public class book13 {
     // Atribut
     String judul;
@@ -20,9 +19,6 @@ public class book13 {
         harga = har;
     }
 
-    book13 bukuNaufal = new book13("Judul Buku Naufal", "Pengarang Naufal", 250, 20, 80000);
-
-
     // Metode
     void tampilInformasi() {
         System.out.println("Judul: " + judul);
@@ -41,5 +37,53 @@ public class book13 {
         harga = hargaBaru;
         System.out.println("Harga buku berhasil diubah menjadi " + hargaBaru);
     }
+
+    int hitungHargaTotal(int jumlahTerjual) {
+        int hargaTotal = harga * jumlahTerjual;
+        return hargaTotal;
+    }
+
+    double hitungDiskon(int hargaTotal) {
+        double diskon = 0.0;
+
+        if (hargaTotal > 150000) {
+            diskon = 0.12; // Diskon 12%
+        } else if (hargaTotal >= 75000 && hargaTotal <= 150000) {
+            diskon = 0.05; // Diskon 5%
+        }
+
+        return diskon;
+    }
+
+    double hitungHargaBayar(int jumlahTerjual){
+        int hargaTotal = hitungHargaTotal(jumlahTerjual);
+        double diskon = hitungDiskon(hargaTotal);
+        
+        double hargaDiskon = hargaTotal - (hargaTotal * diskon);
+        return hargaDiskon;
+    }
+
+    // Contoh method hitungDiskon() dan hitungHargaBayar() bisa ditambahkan di sini
+
+    public static void main(String[] args) {
+        // Membuat objek Buku
+        book13 bk1 = new book13("Today Ends Tomorrow Comes", "Denda Pratiwi", 198, 13, 71000);
+
+        // Menjual beberapa buku dan menampilkan informasi setelah penjualan
+        bk1.terjual(5);
+
+        // Menghitung dan menampilkan harga total
+        int jumlahTerjual = 5;
+        int hargaTotal = bk1.hitungHargaTotal(jumlahTerjual);
+        System.out.println("Harga Total: " + hargaTotal);
+
+        // Menghitung dan menampilkan diskon
+        double diskon = bk1.hitungDiskon(hargaTotal);
+        System.out.println("Diskon: " + (diskon * 100) + "%");
+
+        //Menghitung dan menamppilkan harga Bayar
+        double hargaBayar = bk1.hitungHargaBayar(jumlahTerjual);
+        System.out.println("Harga Bayar Setelah Diskon : " + hargaBayar);
+
+    }
 }
-\\
