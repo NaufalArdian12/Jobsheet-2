@@ -1,9 +1,9 @@
 public class dragon {
     // Atribut
-    private int x;
-    private int y;
-    private int width;
-    private int height;
+    int x;
+    int y;
+    int width;
+    int height;
 
     // Constructors
     public dragon(int x, int y, int width, int height) {
